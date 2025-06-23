@@ -2,6 +2,8 @@
 
 这是一个使用 react 开发的一款 emoji 选择器，兼容移动端和 pc 端。
 
+demo: https://jaydonchow.github.io/jc-emoji-picker/
+
 ```js
 type props {
   layout: {
