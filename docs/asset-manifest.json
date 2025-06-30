@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "./static/css/main.f855e6bc.css",
-    "main.js": "./static/js/main.074a0e19.js",
-    "static/js/787.73469e9c.chunk.js": "./static/js/787.73469e9c.chunk.js",
-    "index.html": "./index.html",
-    "main.f855e6bc.css.map": "./static/css/main.f855e6bc.css.map",
-    "main.074a0e19.js.map": "./static/js/main.074a0e19.js.map",
-    "787.73469e9c.chunk.js.map": "./static/js/787.73469e9c.chunk.js.map"
+    "main.css": "/jc-emoji-picker/static/css/main.f855e6bc.css",
+    "main.js": "/jc-emoji-picker/static/js/main.e3c5b7c8.js",
+    "static/js/787.73469e9c.chunk.js": "/jc-emoji-picker/static/js/787.73469e9c.chunk.js",
+    "index.html": "/jc-emoji-picker/index.html",
+    "main.f855e6bc.css.map": "/jc-emoji-picker/static/css/main.f855e6bc.css.map",
+    "main.e3c5b7c8.js.map": "/jc-emoji-picker/static/js/main.e3c5b7c8.js.map",
+    "787.73469e9c.chunk.js.map": "/jc-emoji-picker/static/js/787.73469e9c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f855e6bc.css",
-    "static/js/main.074a0e19.js"
+    "static/js/main.e3c5b7c8.js"
   ]
 }
