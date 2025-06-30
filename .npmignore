@@ -1,0 +1,16 @@
+# 开发文件
+
+src/
+node_modules/
+public/
+
+# 配置文件
+
+.babelrc
+.rollup.config.js
+
+# 其他
+
+.gitignore
+.yarn.look
+.package-lock.json

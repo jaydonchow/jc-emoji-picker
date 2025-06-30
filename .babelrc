@@ -1,0 +1,11 @@
+// .babelrc
+{
+    "presets": [
+        [
+            "@babel/preset-react",
+            {
+                "runtime": "automatic" // 自动处理 JSX 转换
+            }
+        ]
+    ]
+}
