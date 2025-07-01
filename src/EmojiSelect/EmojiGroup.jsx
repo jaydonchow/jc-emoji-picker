@@ -5,12 +5,12 @@ import Tooltip from "rc-tooltip";
 import List from "rc-virtual-list";
 
 export default function EmojiGroup(props) {
-  const { data, layout, onSelect } = props;
+  const { data, cellSize, height, onSelect } = props;
   const [indexList, setIndexList] = useState([]);
   const ref = useRef();
 
   useEffect(() => {
-    const rowCount = Math.floor(ref.current.clientWidth / layout.cellSize);
+    const rowCount = Math.floor(ref.current.clientWidth / cellSize);
     if (rowCount > 0) {
       const maxIndex = Math.ceil(data.length / rowCount);
       const indexList = Array(maxIndex)
@@ -22,7 +22,7 @@ export default function EmojiGroup(props) {
         });
       setIndexList(indexList);
     }
-  }, [data]);
+  }, [cellSize, data]);
 
   useEffect(() => {
     console.timeEnd("tab-change");
@@ -30,7 +30,7 @@ export default function EmojiGroup(props) {
   }, [indexList]);
 
   const renderChildren = ({ id: index }) => {
-    const rowCount = Math.floor(ref.current.clientWidth / layout.cellSize);
+    const rowCount = Math.floor(ref.current.clientWidth / cellSize);
     let start = index * rowCount;
     let end = (index + 1) * rowCount;
     // const list = data.slice(start, end);
@@ -57,13 +57,14 @@ export default function EmojiGroup(props) {
 
     return <div className="emoji-rows">{list}</div>;
   };
+  console.log(height);
 
   return (
     <div className="emoji_container" ref={ref}>
       <List
         data={indexList}
-        itemHeight={layout.cellSize}
-        height={layout.height}
+        itemHeight={cellSize}
+        height={height}
         showScrollBar={false}
         itemKey="id"
       >

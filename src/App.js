@@ -1,6 +1,6 @@
 import "./App.css";
-// import EmojiSelect from "./EmojiSelect";
-import EmojiSelect from 'jc-emoji-picker';
+import EmojiSelect from "./lib/jc-emoji-picker";
+// import EmojiSelect from 'jc-emoji-picker';
 
 import { useState } from "react";
 
@@ -49,74 +49,90 @@ const Demo = () => {
     },
   });
 
+  const controller = <div
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      flexWrap: "wrap",
+      alignItems: "center",
+      gap: 20,
+      fontSize: "20px",
+      margin: "auto",
+      marginTop: 20,
+    }}
+  >
+    <Input value={width} label={"width"} onChange={(value) => setWidth(value)}></Input>
+    <Input value={height} label={"height"} onChange={(value) => setHeight(value)}></Input>
+    <Input value={gap} label={"gap"} onChange={(value) => setGap(value)}></Input>
+    <Input value={cellSize} label={"cell size"} onChange={(value) => setcellsize(value)}></Input>
+    <Input value={highlight} label={"high light"} onChange={(value) => setHighlight(value)}></Input>
+    <div>
+      category names:
+      <textarea
+
+        rows="4"
+        cols="30"
+        value={JSON.stringify(categoryNames)}
+        onChange={(e) => {
+          setCategoryNames(JSON.parse(e.target.value));
+        }}
+      ></textarea>
+    </div>
+  </div>
+
   return (
     <div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          flexWrap: "wrap",
-          alignItems: "center",
-          gap: 20,
-          fontSize: "20px",
-          margin: "auto",
-          marginTop: 20,
-        }}
-      >
-        <Input value={width} label={"width"} onChange={(value) => setWidth(value)}></Input>
-        <Input value={height} label={"height"} onChange={(value) => setHeight(value)}></Input>
-        <Input value={gap} label={"gap"} onChange={(value) => setGap(value)}></Input>
-        <Input value={cellSize} label={"cell size"} onChange={(value) => setcellsize(value)}></Input>
-        <Input value={highlight} label={"high light"} onChange={(value) => setHighlight(value)}></Input>
+      <h2 className="shining-gradient-text">JC-EMOJI-PICKER</h2>
+      <h3>A react component for selecting emoji emoticons</h3>
+      <div style={{ display: 'flex', gap: 40, borderRadius: 10, background: '#1f2227', padding: '20px', justifyContent: 'space-evenly' }}>
         <div>
-          category names:
-          <textarea
-            rows="3"
-            cols="50"
-            value={JSON.stringify(categoryNames)}
-            onChange={(e) => {
-              setCategoryNames(JSON.parse(e.target.value));
-            }}
-          ></textarea>
+          {controller}
+          <div style={{ textAlign: "center" }}>
+            <button
+              style={{ height: 40 }}
+              onClick={() => {
+                setProp({
+                  categoryNames,
+                  layout: {
+                    width,
+                    height,
+                    gap,
+                    cellSize,
+                    highlight,
+                  },
+                });
+              }}
+            >
+              click to change
+            </button>
+          </div>
+        </div>
+        <div>
+          <div>your choose:</div>
+          <div style={{ fontSize: 40, textAlign: "center", margin: 20 }}>
+            <input
+              style={{ fontSize: 40, width: 350 }}
+              value={input}
+              onChange={(e) => {
+                setInput(e.target.value);
+              }}
+            ></input>
+          </div>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <EmojiSelect
+              value={input}
+              onSelect={(emoji) => {
+                setInput(input + emoji);
+              }}
+              {...prop}
+            ></EmojiSelect>
+          </div>
         </div>
       </div>
-      <div style={{ textAlign: "center" }}>
-        <button
-          style={{ height: 40 }}
-          onClick={() => {
-            setProp({
-              categoryNames,
-              layout: {
-                width,
-                height,
-                gap,
-                cellSize,
-                highlight,
-              },
-            });
-          }}
-        >
-          click to change
-        </button>
-      </div>
-      <div style={{ fontSize: 40, textAlign: "center", margin: 20 }}>
-        <span>your choose:</span>
-        <input
-          style={{ fontSize: 40, width: 350 }}
-          value={input}
-          onChange={(e) => {
-            setInput(e.target.value);
-          }}
-        ></input>
-      </div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <EmojiSelect
-          value={input}
-          onSelect={(emoji) => {
-            setInput(input + emoji);
-          }}
-          {...prop}
-        ></EmojiSelect>
+      <div style={{ fontSize: 12, marginTop: 20 }}>
+        <a target="_blank" href="https://www.npmjs.com/package/jc-emoji-picker?activeTab=readme">npm registy</a>
+        <br></br>
+        <a target="_blank" href="https://github.com/jaydonchow/jc-emoji-picker.git">github</a>
       </div>
     </div>
   );

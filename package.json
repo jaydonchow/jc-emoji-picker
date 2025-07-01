@@ -1,11 +1,19 @@
 {
   "name": "jc-emoji-picker",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A react component for selecting emoji emoticons",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
     "dist"
+  ],
+  "keywords": [
+    "emoji",
+    "emoji-selector",
+    "react-emoji-selector",
+    "emoji-picker",
+    "react-emoji-selector",
+    "react component"
   ],
   "homepage": "https://jaydonchow.github.io/jc-emoji-picker/",
   "dependencies": {
@@ -17,7 +25,6 @@
     "rc-virtual-list": "^3.19.1",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0",
-    "react-router": "^6.11.2",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },

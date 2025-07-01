@@ -29,7 +29,7 @@ const config = {
         dead_code: true, // 移除死代码
       },
       format: {
-        beautify: true,
+        beautify: false,
         wrap_iife: false,
       },
     }),

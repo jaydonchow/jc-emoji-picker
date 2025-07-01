@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+
+.shining-gradient-text {
+  font-size: 60px;
+
+  background: linear-gradient(90deg, #fff, #f0f, #0ff, #fff);
+  background-size: 300% 300%;
+
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  animation: shine 10s ease-in-out infinite;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0% 50%;
+    opacity: 0.8;
+  }
+  50% {
+    background-position: 100% 50%;
+    opacity: 1;
+  }
+  100% {
+    background-position: 0% 50%;
+    opacity: 0.8;
+  }
+}

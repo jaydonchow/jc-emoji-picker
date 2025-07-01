@@ -121,23 +121,28 @@ function converter(value, defaultVal) {
   }
 }
 
+const defaultConfig = {
+  width: 400, // 列
+  height: 220,
+  gap: 10,
+  cellSize: 40,
+  direction: "top", // top bottom left right
+};
+
 export default (props) => {
-  const {
-    onSelect,
-    categoryNames,
-    layout = {
-      width: 400, // 列
-      height: 220,
-      gap: 10,
-      cellSize: 40,
-      direction: "top", // top bottom left right
-    },
-  } = props;
+  const { onSelect, categoryNames, layout = {} } = props;
 
   const [emojiMaps, setEmojiMaps] = useState({});
   const [category, setCategory] = useState([]);
 
   const [active, setActive] = useState("");
+
+  const mergeLayout = useMemo(() => {
+    return {
+      ...defaultConfig,
+      ...layout,
+    };
+  }, [layout]);
 
   const injectStyle = useMemo(() => {
     const {
@@ -146,7 +151,7 @@ export default (props) => {
       width,
       height,
       highlight = "#ddd",
-    } = layout;
+    } = mergeLayout;
     const s = {
       "--cell-size": converter(cellSize, "40px"),
       "--gap": converter(gap, "10px"),
@@ -155,7 +160,7 @@ export default (props) => {
       "--highlight": highlight,
     };
     return s;
-  }, [layout]);
+  }, [mergeLayout]);
 
   async function fetchEmojiData() {
     const result = await getEmojiData();
@@ -173,7 +178,7 @@ export default (props) => {
       <EmojiCategory
         {...{
           category,
-          gap: layout.gap,
+          gap: mergeLayout.gap,
         }}
         categoryNames={categoryNames || category}
         value={active}
@@ -182,7 +187,8 @@ export default (props) => {
         }}
       ></EmojiCategory>
       <EmojiGroup
-        layout={layout}
+        cellSize={mergeLayout.cellSize}
+        height={mergeLayout.height}
         data={emojiMaps[active] || []}
         onSelect={onSelect}
       ></EmojiGroup>
